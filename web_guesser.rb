@@ -11,7 +11,7 @@ get '/' do
   message = check_guess(guess) if params["guess"]
   new_number if @@turns_left <= 0
   new_number if @guessed
-  erb :index, :locals => {:number => @@number, :message => message, :color => @color, :turns_left => @@turns_left, :guessed => @guessed}
+  erb :index, :locals => {:number => @@number, :message => message, :color => @color, :turns_left => @@turns_left, :guessed => @guessed, :cheat => cheat?}
 end
 
 def check_guess(guess)
@@ -42,4 +42,8 @@ end
 def new_number
   @@number = rand(1..100)
   @@turns_left = 5
+end
+
+def cheat?
+  params["cheat"].to_s.downcase == "true" ? true : false
 end

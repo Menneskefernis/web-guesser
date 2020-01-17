@@ -23,5 +23,8 @@
     <% else %>
         <p> Guesses left: <%= turns_left.to_s %> </p>
     <% end %>
+    <% if cheat %>
+      The secret number is: <%= number %>
+    <% end %>
   </body>
 </html
