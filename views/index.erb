@@ -11,11 +11,17 @@
       <input type="text" name="guess">
       <input type="submit" value="Guess!">
     </form>
-    <p><%= message %></p>
+    <% if turns_left == 5 %>
+      <p>A NEW NUMBER HAS BEEN PICKED!</p>
+    <% else %>
+      <p><%= message %></p>
+    <% end %>
     <% if guessed %>
       <p>
-        THE SECRET NUMBER is: <%= number %>
+        THE SECRET NUMBER was: <%= params["guess"] %>
       </p>
+    <% else %>
+        <p> Guesses left: <%= turns_left.to_s %> </p>
     <% end %>
   </body>
 </html
